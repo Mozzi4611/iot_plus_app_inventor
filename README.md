@@ -95,3 +95,7 @@
 4) 공통 설정
 
 ![시간 적용완료 설정](https://github.com/user-attachments/assets/9d7b0a79-3e34-4e7d-93a4-5f03ff3df534)
+
+#### - 화면 전환 설정
+
+![화면전환블럭](https://github.com/user-attachments/assets/53a93031-2474-4b83-8ada-8f814cdb9306)
