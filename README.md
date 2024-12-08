@@ -6,7 +6,7 @@
 # APP-Inventor 설정
 ### 2. 디자이너
 
-- 조명 초기 화면
+#### - 조명 초기 화면
 
 <img src="https://github.com/user-attachments/assets/aa89cc80-50fd-45ed-88b2-ae0a0d896609" alt="400" width="200">
 
@@ -24,7 +24,7 @@
 
 4) 에어컨 설정하기 버튼 클릭 시 에어컨 배치화면으로 이동
 
-- 에어컨 초기 화면
+#### - 에어컨 초기 화면
 
 <img src="https://github.com/user-attachments/assets/0d19b1b0-33fb-4b25-8ae1-d57d4e9457da" alt="400" width="200">
 
@@ -42,7 +42,7 @@
  
 ### 3. 블록
 
-- 스크린 초기화 시 설정
+#### - 스크린 초기화 시 설정
 
 ![스크린 초기화](https://github.com/user-attachments/assets/85c0b94a-a067-4b1e-aaf3-d3ffe56cdd7f)
 
@@ -62,7 +62,7 @@
 
 <img src="https://github.com/user-attachments/assets/2e86cc14-b5e3-4300-b564-0c020ffa9760" alt="400" width="200">
 
-- on/off 설정
+#### - on/off 설정
 
 1) 조명 on/off 설정
 
@@ -74,7 +74,7 @@
 
 조명과 에어컨의 on/off 방식이 다른 이유는 2가지 방법을 모두 표현하기 위함이었음.
 
-- 시간 설정
+#### - 시간 설정
 
 1) 조명 시간 설정
 
