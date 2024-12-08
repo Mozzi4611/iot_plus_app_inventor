@@ -1,5 +1,5 @@
 # Firebase 설정
-### 1.프로젝트 버킷 분리
+### 1. 프로젝트 버킷 분리
 
 ![led1 time](https://github.com/user-attachments/assets/36260c9d-990c-4ea2-9f9c-827add0bdf79)
 
@@ -99,3 +99,207 @@
 #### - 화면 전환 설정
 
 ![화면전환블럭](https://github.com/user-attachments/assets/53a93031-2474-4b83-8ada-8f814cdb9306)
+
+# ESP32 보드 설정
+### 4. 사용 보드
+
+#### i2r-03
+WiFi Bluetooth PLC (4채널 릴레이, 온습도센서, ESP32) KC인증
+![i2r-03-포트설명](https://github.com/kdi6033/i2r-03/assets/37902752/a6df72d2-0707-48f0-93b9-484a90149bba)
+
+### 5. 프로그램 코드
+
+#### - 아두이노 프로그램 코드
+
+```
+#include <WiFi.h>
+#include <FirebaseESP32.h>
+#include <NTPClient.h>
+#include <WiFiUdp.h>
+
+// WiFi 설정
+#define WIFI_SSID "your_WiFi"
+#define WIFI_PASSWORD "your_PASSWORD"
+
+// Firebase 설정
+#define FIREBASE_HOST "Firebase address"
+#define FIREBASE_AUTH "API Key"
+
+// Firebase 객체 생성
+FirebaseData firebaseData;
+FirebaseAuth auth;
+FirebaseConfig config;
+
+// 핀 설정
+const int led1Pin = 26; // Bedroom LED
+const int led2Pin = 27; // Living Room LED
+const int ac1Pin = 32;  // Bedroom AC
+const int ac2Pin = 33;  // Living Room AC
+
+// NTP 클라이언트 설정
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "pool.ntp.org", 3600 * 9); // KST(UTC+9)
+
+// 상태 저장 변수
+String led1StartTime, led1EndTime, ac1StartTime, ac1EndTime;
+String led2StartTime, led2EndTime, ac2StartTime, ac2EndTime;
+bool led1State = false, led2State = false, ac1State = false, ac2State = false;
+
+bool firebaseStreamConnected = false; // Firebase 스트림 상태
+
+// WiFi 연결 함수
+void connectToWiFi() {
+  Serial.print("Connecting to Wi-Fi");
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.print(".");
+  }
+  Serial.println("\nConnected to Wi-Fi");
+}
+
+// Firebase 데이터 변경 감지 (StreamData를 사용)
+void streamCallback(StreamData data) {
+  String path = data.dataPath();
+  String value = data.stringData();
+
+  Serial.println("Path: " + path);
+  Serial.println("Value: " + value);
+
+  if (path == "/BedRoom/led1_start") led1StartTime = value;
+  if (path == "/BedRoom/led1_end") led1EndTime = value;
+  if (path == "/BedRoom/ac1_start") ac1StartTime = value;
+  if (path == "/BedRoom/ac1_end") ac1EndTime = value;
+  if (path == "/LivingRoom/led2_start") led2StartTime = value;
+  if (path == "/LivingRoom/led2_end") led2EndTime = value;
+  if (path == "/LivingRoom/ac2_start") ac2StartTime = value;
+  if (path == "/LivingRoom/ac2_end") ac2EndTime = value;
+}
+
+void streamTimeoutCallback(bool timeout) {
+  if (timeout) {
+    Serial.println("Stream timeout, attempting to reconnect...");
+    firebaseStreamConnected = false;
+  }
+}
+
+// 현재 시간을 "HH:MM" 형식으로 가져오기
+String getCurrentTime() {
+  timeClient.update();
+  return timeClient.getFormattedTime().substring(0, 5); // HH:MM 형식
+}
+
+// 장치 제어 함수
+void controlDevices() {
+  String currentTime = getCurrentTime();
+
+  // Bedroom LED 제어
+  if (currentTime == led1StartTime && !led1State) {
+    digitalWrite(led1Pin, HIGH);
+    led1State = true;
+    Firebase.setString(firebaseData, "/BedRoom/led1", "1");
+    Serial.println("Bedroom LED ON");
+  } else if (currentTime == led1EndTime && led1State) {
+    digitalWrite(led1Pin, LOW);
+    led1State = false;
+    Firebase.setString(firebaseData, "/BedRoom/led1", "0");
+    Serial.println("Bedroom LED OFF");
+  }
+
+  // Living Room LED 제어
+  if (currentTime == led2StartTime && !led2State) {
+    digitalWrite(led2Pin, HIGH);
+    led2State = true;
+    Firebase.setString(firebaseData, "/LivingRoom/led2", "1");
+    Serial.println("Living Room LED ON");
+  } else if (currentTime == led2EndTime && led2State) {
+    digitalWrite(led2Pin, LOW);
+    led2State = false;
+    Firebase.setString(firebaseData, "/LivingRoom/led2", "0");
+    Serial.println("Living Room LED OFF");
+  }
+
+  // Bedroom AC 제어
+  if (currentTime == ac1StartTime && !ac1State) {
+    digitalWrite(ac1Pin, HIGH);
+    ac1State = true;
+    Firebase.setString(firebaseData, "/BedRoom/ac1", "1");
+    Serial.println("Bedroom AC ON");
+  } else if (currentTime == ac1EndTime && ac1State) {
+    digitalWrite(ac1Pin, LOW);
+    ac1State = false;
+    Firebase.setString(firebaseData, "/BedRoom/ac1", "0");
+    Serial.println("Bedroom AC OFF");
+  }
+
+  // Living Room AC 제어
+  if (currentTime == ac2StartTime && !ac2State) {
+    digitalWrite(ac2Pin, HIGH);
+    ac2State = true;
+    Firebase.setString(firebaseData, "/LivingRoom/ac2", "1");
+    Serial.println("Living Room AC ON");
+  } else if (currentTime == ac2EndTime && ac2State) {
+    digitalWrite(ac2Pin, LOW);
+    ac2State = false;
+    Firebase.setString(firebaseData, "/LivingRoom/ac2", "0");
+    Serial.println("Living Room AC OFF");
+  }
+}
+
+// Firebase 스트림 연결 함수
+void connectToFirebaseStream() {
+  if (!Firebase.beginStream(firebaseData, "/")) {
+    Serial.println("Stream connection failed: " + firebaseData.errorReason());
+    firebaseStreamConnected = false;
+  } else {
+    firebaseStreamConnected = true;
+    Serial.println("Firebase stream connected.");
+    Firebase.setStreamCallback(firebaseData, streamCallback, streamTimeoutCallback);
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  // 핀 모드 설정
+  pinMode(led1Pin, OUTPUT);
+  pinMode(led2Pin, OUTPUT);
+  pinMode(ac1Pin, OUTPUT);
+  pinMode(ac2Pin, OUTPUT);
+
+  // 초기 상태
+  digitalWrite(led1Pin, LOW);
+  digitalWrite(led2Pin, LOW);
+  digitalWrite(ac1Pin, LOW);
+  digitalWrite(ac2Pin, LOW);
+
+  // WiFi 연결
+  connectToWiFi();
+
+  // Firebase 설정
+  config.host = FIREBASE_HOST;
+  config.signer.tokens.legacy_token = FIREBASE_AUTH;
+
+  // Firebase 초기화
+  Firebase.begin(&config, &auth);
+
+  // Firebase 스트림 연결
+  connectToFirebaseStream();
+
+  // NTP 클라이언트 초기화
+  timeClient.begin();
+}
+
+void loop() {
+  // 스트림 연결 확인 및 재연결
+  if (!firebaseStreamConnected) {
+    delay(2000); // 2초 대기
+    connectToFirebaseStream();
+    Serial.println("reconnecting..");
+  }
+
+  // 시간 기반 장치 제어
+  controlDevices();
+  delay(30000); // 30초 간격으로 제어
+}
+```
