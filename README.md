@@ -13,7 +13,6 @@
 1) 조명 on/off 변경 시 조명 이미지 변경 및 스위치 색상 변경
 
  <img src="https://github.com/user-attachments/assets/275e5af9-6d8a-4225-9b60-722463532476" alt="400" width="200">
- <img src="https://github.com/user-attachments/assets/275e5af9-6d8a-4225-9b60-722463532476" alt="400" width="200">
 
 2) 시간 설정하기 버튼 클릭 시 숨겨진 창 팝업 및 스위치 동작 시간 설정
 
@@ -42,3 +41,7 @@
  <img src="https://github.com/user-attachments/assets/5ce1ce0a-a712-40d8-b56f-f827e0e7ce05" alt="400" width="200">
  
 ### 3. 블록
+
+- 스크린 초기화 시 설정
+
+![스크린 초기화](https://github.com/user-attachments/assets/85c0b94a-a067-4b1e-aaf3-d3ffe56cdd7f)
