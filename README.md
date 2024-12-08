@@ -45,3 +45,21 @@
 - 스크린 초기화 시 설정
 
 ![스크린 초기화](https://github.com/user-attachments/assets/85c0b94a-a067-4b1e-aaf3-d3ffe56cdd7f)
+
+1) 함수 설정
+
+![함수1](https://github.com/user-attachments/assets/3e43409a-6bc5-4a99-a1ef-736618d3c793)
+
+텍스트 초기화 설정
+
+![함수2](https://github.com/user-attachments/assets/88e67f45-34ea-41b5-bb51-41660c66a77b)
+
+조명 및 에어컨 이미지 초기화 설정
+
+![함수3](https://github.com/user-attachments/assets/675d3a8b-b786-46d8-a55e-e603a527417d)
+
+조명 화면 표시 및 에어컨 화면 숨기기 설정
+
+<img src="https://github.com/user-attachments/assets/2e86cc14-b5e3-4300-b564-0c020ffa9760" alt="400" width="200">
+
+파이어베이스 값 초기화 설정
