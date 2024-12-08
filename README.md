@@ -63,4 +63,14 @@
 
 <img src="https://github.com/user-attachments/assets/2e86cc14-b5e3-4300-b564-0c020ffa9760" alt="400" width="200">
 
+- on/off 설정
 
+1) 조명 on/off 설정
+
+![조명 온오프 블럭](https://github.com/user-attachments/assets/b7d48b61-edb3-41d3-bdf9-f2af7644c57d)
+
+2) 에어컨 on/off 설정
+
+![에어컨 온오프 블록](https://github.com/user-attachments/assets/72a22007-aa72-4e95-9c6f-edc35b0f5ef6)
+
+조명과 에어컨의 on/off 방식이 다른 이유는 2가지 방법을 모두 표현하기 위함이었음.
