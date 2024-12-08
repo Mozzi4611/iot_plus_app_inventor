@@ -10,6 +10,10 @@
 
 <img src="https://github.com/user-attachments/assets/aa89cc80-50fd-45ed-88b2-ae0a0d896609" alt="400" width="200">
 
+노란색의 버튼은 아직 눌리지 않은 상태를 의미함 (노란색 버튼을 눌러야 동작함!)
+
+회색 버튼은 비활성화 상태를 의미 (눌러도 동작 X)
+
 1) 조명 on/off 변경 시 조명 이미지 변경 및 스위치 색상 변경
 
  <img src="https://github.com/user-attachments/assets/275e5af9-6d8a-4225-9b60-722463532476" alt="400" width="200">
@@ -68,9 +72,15 @@
 
 ![조명 온오프 블럭](https://github.com/user-attachments/assets/b7d48b61-edb3-41d3-bdf9-f2af7644c57d)
 
+on/off 시 파이어베이스의 저장된 값에 1, 0 지정 및 이미지 변경
+
+스위치 색상을 변경시켜 스위치가 눌렸음을 표시함
+
 2) 에어컨 on/off 설정
 
 ![에어컨 온오프 블록](https://github.com/user-attachments/assets/72a22007-aa72-4e95-9c6f-edc35b0f5ef6)
+
+on/off 시 파이어베이스의 저장된 값에 1, 0 지정 및 스위치와 이미지 변경
 
 조명과 에어컨의 on/off 방식이 다른 이유는 2가지 방법을 모두 표현하기 위함이었음.
 
@@ -84,6 +94,10 @@
 
 00:00 형식으로 작성 그 후 Firebase에 실시간 업데이트
 
+안방 시간 설정 시 거실 시간 설정 숨기기 및 그 역도 성립되게 함
+
+
+
 2) 에어컨 시간 설정
 
 ![에어컨 시간입력](https://github.com/user-attachments/assets/a6fff976-ac5d-45e6-b21f-f7d519c8ca30)
@@ -91,6 +105,8 @@
 ![에어컨 초기화](https://github.com/user-attachments/assets/c4ddcc1b-6d84-4e6f-af95-0f4b00e5af7c)
 
 00:00 형식으로 작성 그 후 Firebase에 실시간 업데이트
+
+안방 시간 설정 시 거실 시간 설정 숨기기 및 그 역도 성립되게 함
 
 4) 공통 설정
 
@@ -303,3 +319,4 @@ void loop() {
   delay(30000); // 30초 간격으로 제어
 }
 ```
+수정중...
