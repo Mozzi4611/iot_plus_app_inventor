@@ -7,9 +7,11 @@
 ### 2. 디자이너
 
 -조명
+
 <img src="https://github.com/user-attachments/assets/aa89cc80-50fd-45ed-88b2-ae0a0d896609" alt="400" width="200">
 
  1)조명 on/off 변경 시 조명 이미지 변경 및 스위치 색상 변경
 
- ![KakaoTalk_20241208_000317520_01](https://github.com/user-attachments/assets/275e5af9-6d8a-4225-9b60-722463532476)
+ <img src="https://github.com/user-attachments/assets/275e5af9-6d8a-4225-9b60-722463532476" alt="400" width="200">
+
 ### 3. 블록
