@@ -14,5 +14,8 @@
 
  <img src="https://github.com/user-attachments/assets/275e5af9-6d8a-4225-9b60-722463532476" alt="400" width="200">
 
+2)시간 설정하기 버튼 클릭 시 숨겨진 창 팝업 및 스위치 동작 시간 설정
 
+<img src="https://github.com/user-attachments/assets/590ae69c-f100-4a00-8a52-806cc0c29590" alt="400" width="200">
+ 
 ### 3. 블록
