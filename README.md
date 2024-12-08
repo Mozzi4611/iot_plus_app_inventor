@@ -46,7 +46,6 @@
 
 ![스크린 초기화](https://github.com/user-attachments/assets/85c0b94a-a067-4b1e-aaf3-d3ffe56cdd7f)
 
-
 1) 텍스트 초기화 설정
 
 ![함수1](https://github.com/user-attachments/assets/3e43409a-6bc5-4a99-a1ef-736618d3c793)
@@ -74,3 +73,25 @@
 ![에어컨 온오프 블록](https://github.com/user-attachments/assets/72a22007-aa72-4e95-9c6f-edc35b0f5ef6)
 
 조명과 에어컨의 on/off 방식이 다른 이유는 2가지 방법을 모두 표현하기 위함이었음.
+
+- 시간 설정
+
+1) 조명 시간 설정
+
+![조명 시간입력](https://github.com/user-attachments/assets/77e2d87d-cda3-4182-86a7-5f31bff3db8c)
+![조명 시간설정](https://github.com/user-attachments/assets/09d7df47-eb36-49ee-ab1f-23f42d343646)
+![조명 초기화](https://github.com/user-attachments/assets/cd3ccd46-14ac-45ed-bc55-049237c42ffe)
+
+00:00 형식으로 작성 그 후 Firebase에 실시간 업데이트
+
+2) 에어컨 시간 설정
+
+![에어컨 시간입력](https://github.com/user-attachments/assets/a6fff976-ac5d-45e6-b21f-f7d519c8ca30)
+![에어컨 시간 설정](https://github.com/user-attachments/assets/ee62209a-2305-4820-ac80-440924ed3e4c)
+![에어컨 초기화](https://github.com/user-attachments/assets/c4ddcc1b-6d84-4e6f-af95-0f4b00e5af7c)
+
+00:00 형식으로 작성 그 후 Firebase에 실시간 업데이트
+
+4) 공통 설정
+
+![시간 적용완료 설정](https://github.com/user-attachments/assets/9d7b0a79-3e34-4e7d-93a4-5f03ff3df534)
