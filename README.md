@@ -13,6 +13,7 @@
 1) 조명 on/off 변경 시 조명 이미지 변경 및 스위치 색상 변경
 
  <img src="https://github.com/user-attachments/assets/275e5af9-6d8a-4225-9b60-722463532476" alt="400" width="200">
+ <img src="https://github.com/user-attachments/assets/275e5af9-6d8a-4225-9b60-722463532476" alt="400" width="200">
 
 2) 시간 설정하기 버튼 클릭 시 숨겨진 창 팝업 및 스위치 동작 시간 설정
 
