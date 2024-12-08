@@ -22,6 +22,8 @@
 
  <img src="https://github.com/user-attachments/assets/369348dd-32c9-40f4-aeba-cc1a142ac605" alt="400" width="200">
 
+4) 에어컨 설정하기 버튼 클릭 시 에어컨 배치화면으로 이동
+
 - 에어컨 초기 화면
 
 <img src="https://github.com/user-attachments/assets/0d19b1b0-33fb-4b25-8ae1-d57d4e9457da" alt="400" width="200">
